@@ -120,7 +120,6 @@ RCT_EXPORT_METHOD(connectToProtectedSSIDPrefix:(NSString*)ssid
 RCT_EXPORT_METHOD(connectToProtectedSSID:(NSString*)ssid
                   withPassphrase:(NSString*)passphrase
                   isWEP:(BOOL)isWEP
-                  forIOT:(BOOL)forIOT
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
     [self connectToProtectedSSIDOnce:ssid withPassphrase:passphrase isWEP:isWEP joinOnce:false resolver:resolve rejecter:reject];
