@@ -116,6 +116,7 @@ declare module 'react-native-wifi-reborn' {
     export function connectToSSID(SSID: string): Promise<void>;
     export function connectToSSIDPrefix(SSIDPrefix: string): Promise<void>;
     export function disconnectFromSSID(SSIDPrefix: string): Promise<void>;
+    export function verifySSIDConfiguredInPast(SSID: string): Promise<boolean>;
     /**
      * Connects to a WiFi network. Rejects with an error if it couldn't connect.
      *

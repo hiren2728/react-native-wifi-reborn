@@ -181,6 +181,22 @@ RCT_EXPORT_METHOD(disconnectFromSSID:(NSString*)ssid
     }
 }
 
+RCT_EXPORT_METHOD(verifySSIDConfiguredInPast:(NSString*)ssid resolver:(RCTPromiseResolveBlock)resolve rejected:(RCTPromiseRejectBlock)reject) {
+    if (@available(iOS 11.0, *)) {
+        [[NEHotspotConfigurationManager sharedManager] getConfiguredSSIDsWithCompletionHandler: ^ (NSArray * array) {
+            NSLog (@ "Response:%@", array);
+            if(![array isEqual:NULL]) {
+                resolve(@([array containsObject:ssid]));
+            }
+            else {
+                resolve(false);
+            }
+        }];
+    } else {
+        resolve(false);
+    }
+}
+
 
 RCT_REMAP_METHOD(getCurrentWifiSSID,
                  resolver:(RCTPromiseResolveBlock)resolve
